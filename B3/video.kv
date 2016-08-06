@@ -1,0 +1,140 @@
+#:import clr kivy.utils.get_color_from_hex
+#-*- coding:utf-8 -*-
+<Layout>:
+    font_name:"ubu"
+<Widget>:
+    font_name:"ubu"
+<MButton>:
+    background_color:clr("#66cccc")
+
+<About>:
+    size_hint:0.5,0.3
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text:"KVideoPlayer programı  yahya kesenek(kycorp)\n tarafından yapılmıştır.\niletişim ramayana111@hotmail.com\n      copyright@2016"
+
+<VolumeSlider>:
+    size_hint:None,0.3
+    width:40
+    vSlider:vol
+    x:app.root.width+50
+    BoxLayout:
+        Slider:
+            id:vol
+            orientation:"vertical"
+            min:0
+            max:1
+            value:0.5
+<PlayerList>:
+    container:container
+    size_hint:.7,.8
+    ScrollView:
+        size_hint:.7,.8
+        BoxLayout:
+            padding:5
+            spacing:4
+            orientation:"vertical"
+            size_hint_y:None
+            id:container
+
+<FileOpen>:
+    fc:fc
+    BoxLayout:
+        canvas:
+            Color:
+                rgba:clr("#83abc4")
+            Rectangle:
+                size:self.size
+                pos:self.pos
+
+        orientation:"vertical"
+        size_hint:0.8,0.8
+        pos_hint:{"center_x":0.5,"center_y":0.5}
+        FileChooserIconView:
+            size_hint:1,0.75
+            id:fc
+            rootpath:""
+            multiselect:True
+            font_name:"ubu"
+        BoxLayout:
+            size_hint:None,None
+            size:120,30
+            padding:2
+            spacing:5
+            pos_hint:{"right":1}
+            Button:
+                size_hint:None,None
+                size:50,30
+                text:"Yükle"
+                background_color:clr("#abcabc")
+                on_press:app.root.load(fc.path,fc.selection)
+            Button:
+                size_hint:None,None
+                size:50,30
+                text:"Vazgeç"
+                background_color:clr("#abcabc")
+                on_press:root.dismiss()
+
+
+<KVideoplayer>:
+    video:_video
+    thumb:thumb
+    ply:playBtn
+    stp:stopBtn
+    vProg:videoProg
+    vLabel:videoLbl
+    vButon:volBtn
+    controls:controls
+    MVideo:
+        id:_video
+        pos_hint:{"center_x":0.5,"center_y":0.5}
+        source:""
+        play:False
+        allow_stretch:True
+    AsyncImage:
+        pos_hint:{"center_x":0.5,"center_y":0.5}
+        id:thumb
+        source:"logo_tv.png"
+        allow_stretch:True
+    BoxLayout:
+        size_hint:.9,None
+        height:33
+        spacing:5
+        padding:10
+        id:controls
+        Button:
+            id:playBtn
+            size_hint:None,None
+            size:33,33
+            background_normal:"ply_nrm.png"
+            background_down:"ply_down.png"
+            on_release:root.videoPlayPause()
+        Button:
+            id:stopBtn
+            size_hint:None,None
+            size:33,33
+            background_normal:"stp_nrml.png"
+            background_down:"stp_down.png"
+            on_release:root.stopVideo()
+        Slider:
+            min:0
+            max:1
+            value:0
+            id:videoProg
+            size_hint:3,None
+            height:33
+        Label:
+            text:"00:00"
+            size_hint:1,None
+            height:33
+            id:videoLbl
+        Button:
+            id:volBtn
+            size_hint:None,None
+            size:33,33
+            background_normal:"vol_nrml.png"
+            background_down:"vol_down.png"
+            on_press:root.volumeOpen()
+
+
