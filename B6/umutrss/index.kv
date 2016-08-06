@@ -1,0 +1,35 @@
+<MButton>:
+    size_hint:1,None
+    height:65
+    background_normal:"btnbg.png"
+    background_down:"btnbg_d.png"
+<MainScreen>:
+    grid:_grid
+    BoxLayout:
+        orientation:"vertical"
+        padding:50
+        spacing:5
+        AsyncImage:
+            source:"rss1.png"
+            allow_stretch:True
+            keep_ration:True
+            size_hint:None,None
+            size:128,128
+            pos_hint:{"center_x":0.5}
+        ScrollView:
+            size_hint:1,0.8
+            GridLayout:
+                size_hint_y:None
+                id:_grid
+                cols:1
+                padding:2
+                spacing:5
+
+
+
+
+
+
+
+
+

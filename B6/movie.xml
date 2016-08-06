@@ -1,0 +1,18 @@
+<sinema vitrin="Yeni Gelenler">
+<film etiket="Enemy Behind">
+	<tip>Savaş</tip>
+	<sene>2003</sene>
+	<format>DVD</format>
+	<rating>PG</rating>
+	<yildiz>10</yildiz>
+	<aciklama>ABD -Japon savaşı hakkında söyleşi</aciklama>
+</film>
+<film etiket="Transformars">
+	<tip>Animasyon,Bilim Kurgu</tip>
+	<sene>1989</sene>
+	<format>DVD</format>
+	<rating>R</rating>
+	<yildiz>8</yildiz>
+	<aciklama>Bir bilim kurgu,macera </aciklama>
+</film>
+</sinema>

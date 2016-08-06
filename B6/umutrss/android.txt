@@ -1,0 +1,3 @@
+title=Umut Rss Feeder
+author=ky
+orientation=portrait

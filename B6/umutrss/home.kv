@@ -1,0 +1,89 @@
+#:import clr kivy.utils.get_color_from_hex
+<Label>:
+    font_name:"ubu"
+<Button>:
+    font_name:"ubu"
+    background_color:clr("#bab206")
+<ToggleButton>:
+    font_name:"ubu"
+<HomeScreen>:
+    gndmLabel:gndmLabel
+    container:container
+    BoxLayout:
+        orientation:"vertical"
+        BoxLayout:
+            size_hint:1,0.05
+            Button:
+                text:"[font=ifont]_[/font]"
+                size_hint:1,1
+                markup:True
+                on_press:root.manager.current="panelscreen"
+            Label:
+                id:gndmLabel
+                text:""
+                size_hint:4,1
+            Button:
+                text:"[font=ifont]<[/font]"
+                size_hint:1,1
+                markup:True
+                on_release:root.manager.current="mainscreen"
+        ScrollView:
+            size_hint:1,0.9
+            GridLayout:
+                padding:2
+                spacing:1
+                size_hint:1,None
+                cols:1
+                id:container
+<LeftSide>:
+    container:container
+    size_hint:0.4,1
+    ScrollView:
+        size_hint:1,0.95
+        BoxLayout:
+            size_hint:1,None
+            orientation:"vertical"
+            spacing:2
+            id:container
+
+
+<MToggleButton>:
+    size_hint:1,None
+    group:"rss"
+    height:100
+<MBox>:
+    orientation:"vertical"
+    size_hint:1,None
+    height:300
+    clickable:clickable
+    canvas.before:
+        Color:
+            rgb:(0.1,0.1,0.1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    ClickableLabel:
+        id:clickable
+        text:root.title
+        size_hint:1,1
+        canvas.before:
+            Color:
+                rgba:clr("#87bfce")
+            Rectangle:
+                pos:self.pos
+                size:self.size
+    BoxLayout:
+        size_hint:1,9
+        spacing:1
+        AsyncImage:
+            allow_stretch:True
+            size_hint:1,1
+            source:root.img
+        MLabel:
+            size_hint:3, 1
+            text:root.description
+<MLabel@Label>:
+    text_size:(self.width,None)
+    halign:"left"
+    valign:"top"
+    markup:True
