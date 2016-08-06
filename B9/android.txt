@@ -1,0 +1,3 @@
+title=Py puzzle Game
+author=yahya kesenek
+orientation=landscape

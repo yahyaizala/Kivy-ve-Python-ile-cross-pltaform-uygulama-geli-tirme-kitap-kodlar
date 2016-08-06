@@ -1,0 +1,205 @@
+#:import clr kivy.utils.get_color_from_hex
+#:import wipe kivy.uix.screenmanager.WipeTransition
+<Button>:
+    size_hint:1,None
+    height:50
+    background_normal:"images/btn_bg.png"
+    background_down:"images/btn_bg_down.png"
+    font_name:"ubu"
+    color:(0.2,0.2,0.2,1)
+<ImageButton>:
+    img:img
+    source:"images/bg.png"
+    allow_stretch:True
+    keep_ratio:False
+    Image:
+        id:img
+        source:"images/f_butn.png"
+        keep_ratio:False
+        allow_stretch:True
+        size:root.size
+        pos:root.pos
+<ErrPanel>:
+    error:err
+    size_hint:0.5,0.3
+    Label:
+        text:""
+        id:err
+
+<EndPanel>:
+    size_hint:0.5,0.3
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text:"Oyun Bitti!"
+            size_hint:1,None
+            height:30
+        Button:
+            text:"Yeni"
+            on_press:root.newGame()
+        Button:
+            text:"Çıkış"
+            on_press:root.exit()
+
+<MLabel@Label>:
+    size_hint:1,None
+    height:50
+    color:clr("#41d441")
+<ScorePanel>:
+    container:container
+    size_hint:0.8,0.6
+    ScrollView:
+        size_hint:.9,.8
+        padding:2
+        spacing:5
+        BoxLayout:
+            size_hint:1,None
+            id:container
+            orientation:"vertical"
+
+<AboutPanel>:
+    background_color:clr("#ff7373")
+    size_hint:0.7,0.7
+    BoxLayout:
+        Label:
+            text:"[size=23]PyPuzzle Game[/size]\n\nBasit Hafıza Oyunu\n\nJellybonları eşleştir.\n\nSkorunu tahtaya yaz.\n\nwww.yahyakesenek.com kycorp@2016"
+            markup:True
+
+<SesPanel>:
+    background_color:clr("ff7373")
+    size_hint:0.7,0.4
+    BoxLayout:
+        Label:
+            text:"Ses ayarı :"
+        Slider:
+            min:0
+            max:1
+            value:0.25
+            on_value:app.set_value(self.value)
+<CikisPanel>:
+    background_color:clr("ff7373")
+    size_hint:0.5,0.3
+    BoxLayout:
+        orientation:"vertical"
+        padding:5
+        spacing:2
+        Label:
+            size_hint:1,None
+            height:30
+            text:"Çıkmak istediğinizden emin misiniz?"
+        Button:
+            text:"Hayır"
+            on_press:root.dismiss()
+        Button:
+            text:"Evet"
+            on_press:exit()
+<SScreen>:
+    name:"start"
+<GScreen>:
+    name:"game"
+<MScreenManager>:
+    transition:wipe(duration=1)
+    canvas.before:
+        Color:
+            rgba:clr("f0ca9a")
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    SScreen:
+        name:"start"
+        BoxLayout:
+            Image:
+                source:"images/Jelly1.png"
+                size_hint:0.5,1
+                allow_stretch:False
+            BoxLayout:
+                spacing:10
+                padding:5
+                size_hint:0.5,.5
+                pos_hint:{"center_y":.5}
+                orientation:"vertical"
+                Button:
+                    text:"Başla"
+                    on_press:app.go("game")
+                Button:
+                    text:"Hakkında"
+                    on_press:app.go("hakkimda")
+                Button:
+                    text:"Ses"
+                    on_press:app.go("ses")
+                Button:
+                    text:"Çıkış"
+                    on_press:app.go("exit")
+
+    GScreen:
+        name:"game"
+        countdownL:countdownL
+        scoreL:scoreL
+        levelL:levelL
+        container:container
+        AnchorLayout:
+            anchor_x:"center"
+            anchor_y:"top"
+            BoxLayout:
+                id:_header
+                size_hint:1,None
+                height:53
+                padding:2
+                spacing:1
+                Button:
+                    text:"<Geri"
+                    size_hint:None,None
+                    size:100,50
+                    on_press:root.current="start"
+                MLabel:
+                    text:"[size=40]PyPuzzle[/size]"
+                    markup:True
+                MLabel:
+                    text:""
+                    id:scoreL
+                MLabel:
+                    text:""
+                    id:levelL
+                MLabel:
+                    id:countdownL
+                    text:""
+        AnchorLayout:
+            anchor_x:"center"
+            anchor_y:"bottom"
+            GridLayout:
+                size_hint:1,None
+                height:root.height-_header.height
+                id:container
+                spacing:1
+                padding:1
+    EndScreen:
+        name:"endscreen"
+        nick:nick
+        BoxLayout:
+            orientation:"vertical"
+            padding:10
+            spacing:10
+            pos_hint:{"center_x":0.5,"center_y":0.6}
+            size_hint:0.8,0.5
+            Label:
+                size_hint:1,None
+                height:50
+                text:"PyPuzzle Skor Girişi "
+                color:clr("53a7c7")
+            TextInput:
+                font_name:"ubu"
+                size_hint:1,None
+                height:50
+                id:nick
+                multiline:False
+            Button:
+                text:"Gönder"
+                on_release:self.parent.parent.postScores()
+            Button:
+                text:"<Geri"
+                on_release:self.parent.parent.go_back()
+
+
+
+
+
