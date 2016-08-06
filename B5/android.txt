@@ -1,0 +1,3 @@
+title=kyservice
+author=yahya kesenek
+orientation=portrait

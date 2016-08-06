@@ -1,0 +1,31 @@
+#-*- coding:utf-8 -*-
+<MPop>:
+    lbl:_lbl
+    size_hint:0.5,0.3
+    Label:
+        size_hint:0.5,0.3
+        id:_lbl
+<Label>:
+    font_name:"moon"
+    halign:"left"
+    valign:"top"
+    size_hint:(1, None)
+    height:90
+    text_size:(self.width,None)
+<MWid>:
+    text:""
+    markup:True
+    canvas.before:
+        Color:
+            rgba:(0.6,0.2,0.1,0.7)
+        Rectangle:
+            size:self.size
+            pos:self.pos
+<MGUI>:
+    mBox:mBox
+    size_hint:1,1
+    BoxLayout:
+        orientation:"vertical"
+        size_hint:1,None
+        spacing:10
+        id:mBox
