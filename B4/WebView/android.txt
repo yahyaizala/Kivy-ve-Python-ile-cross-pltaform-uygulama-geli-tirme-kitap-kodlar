@@ -1,0 +1,3 @@
+title=android view
+author=ky
+orientation=portrait

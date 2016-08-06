@@ -1,0 +1,65 @@
+<MPop>:
+    title:"Hata"
+    size_hint:0.5,0.3
+    BoxLayout:
+        Label:
+            text:root.lbl
+<MyWidget>:
+    size_hint_x:0.1
+<Player>:
+    size_hint:None,None
+    size:66,66
+    canvas:
+        Rectangle:
+            pos:self.pos
+            size:self.size
+            source:"cnvar.png"
+<Evil>:
+    size_hint:None,None
+    size:66,66
+    canvas:
+        Rectangle:
+            pos:self.pos
+            size:self.size
+            source:"evil.png"
+
+<Background>:
+    player:player
+    evil:evil
+    canvas:
+        Rectangle:
+            pos:self.pos
+            size:self.size
+            source:"bg.jpg"
+    MyWidget:
+        size_hint_y:1
+        pos:0,0
+    MyWidget:
+        size_hint_y:.4
+        pos:root.width-self.width,0
+    MyWidget:
+        size_hint_y:0.4
+        pos:root.width-self.width,root.height-self.height
+    MyWidget:
+        size_hint_x:0.4
+        size_hint_y:0.1
+        pos:0,0
+    MyWidget:
+        size_hint_x:0.4
+        size_hint_y:0.1
+        pos:root.width-self.width,0
+    MyWidget:
+        size_hint_x:0.4
+        size_hint_y:0.1
+        pos:0,root.height-self.height
+    MyWidget:
+        size_hint_x:0.4
+        size_hint_y:0.1
+        pos:root.width - self.width, root.height-self.height
+    Player:
+        id:player
+        pos:(root.width-self.width)/2,(root.height-self.height)/2
+    Evil:
+        id:evil
+        pos:(root.width-self.width)/2,(root.height/1.2)-100
+

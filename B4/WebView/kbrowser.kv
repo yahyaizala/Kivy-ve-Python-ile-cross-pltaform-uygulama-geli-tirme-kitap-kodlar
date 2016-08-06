@@ -1,0 +1,15 @@
+<KBrowserLayout>:
+    AnchorLayout:
+        anchor_x:"center"
+        anchor_y:"center"
+        BoxLayout:
+            size_hint:1,None
+            height:50
+            TextInput:
+                id:url_to_go
+                size_hint:3,1
+            Button:
+                text:"Go"
+                size_hint:1,1
+                on_release:app.load_site()
+

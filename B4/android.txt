@@ -1,0 +1,3 @@
+title=canavar oyun
+author=ky
+orientation=portrait

@@ -1,0 +1,39 @@
+<MPop>:
+    size_hint:0.8,0.1
+    Label:
+        text:root.err_str
+<MModal>:
+    size_hint:0.8,0.1
+    pos_hint:{"center_x":0.5,"center_y":0.5}
+    BoxLayout:
+        TextInput:
+            id:bt
+            size_hint:3,1
+            hint_text:u"Cihaz adı giriniz"
+            multiline:False
+        Button:
+            size_hint:1,1
+            text:"Bağlan"
+            on_press:app.connect(root,bt.text)
+<Button>:
+    background_color:(0.5,0.5,0.5,1)
+<GUI>:
+    cols:1
+    rows:3
+    spacing:10
+    padding:5
+    size_hint:0.5,0.5
+    pos_hint:{"center_x":0.5,"center_y":0.5}
+    Button:
+        text:"ileri"
+        on_press:root.send(self.text)
+    BoxLayout:
+        Button:
+            text:"sola"
+            on_press:root.send(self.text)
+        Button:
+            text:"saga"
+            on_press:root.send(self.text)
+    Button:
+        text:"geri"
+        on_press:root.send(self.text)
