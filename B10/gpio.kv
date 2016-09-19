@@ -1,0 +1,16 @@
+#-*- coding:utf-8 -*-
+<Button>:
+    size_hint:0.5,0.5
+<MBoxLayout>:
+    pos_hint:{"center_x":0.5,"center_y":0.5}
+    size_hint:0.5,0.5
+    Button:
+        background_color:(1,0,0,1)
+        text:"Kırmızı LED Aç"
+        on_press:app.openRed()
+        id:kButton
+    ToggleButton:
+        background_color:(0,0,1,1)
+        text:"Kapalı"
+        state:"normal"
+        id:bToggle
